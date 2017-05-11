@@ -5,6 +5,10 @@ window.helloText = function() {
 window.hello = function() {
   html = JST['app/templates/hello.us']({text: helloText()});
   document.body.innerHTML += html;
+
+  $.get('/add/5/6', function (response) {
+    alert(response.result);
+  });
 };
 
 if(window.addEventListener) {

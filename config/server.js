@@ -17,5 +17,10 @@ module.exports = {
     // app.get('/api/greeting/:message', function(req, res){
     //   res.json({ message: "OK, "+req.params.message });
     // });
+    app.get('/add/:left/:right', function (req, res) {
+      res.json({
+        result: parseInt(req.params.left, 10) + parseInt(req.params.right, 10)
+      });
+    })
   }
 };
