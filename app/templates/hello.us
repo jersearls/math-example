@@ -1,3 +1,9 @@
-<div class="hello">
+ <!--div calls style class .intro from css, 'text' is replaced by 'helloText' variable  -->
+ <div class="intro">
   <%= text %>
-</div>
+  </div>
+  <div><input type="text" name="firstnumber">
+  +
+  <input type="text" name="secondnumber">
+  <button class="intro" name="enter">Caclulate</button>
+  </div>
