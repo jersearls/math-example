@@ -1,5 +1,5 @@
 window.helloText = function() {
-  return 'This is a calculator. \'Nuff said.';
+  return "This is a calculator. \'Nuff said.";
 };
 
 // JST is javascript template, dynamically rendering the page
@@ -15,15 +15,15 @@ if(window.addEventListener) {
   window.attachEvent('onload', window.hello);
 }
 
-//get a reference to the element
-var enterBtn = JST['app/templates/hello.us'](document.getElementById('enter'));
+//get a reference to the button element
+var enterBtn = $('button[name="enter"]');
 
 // enter button actions
-enterBtn.addEventListener('click', function (e) {
+$('#enter').click(function (e) {
   var firstNumber = $('input[name="firstnumber"]').val();
   var secondNumber = $('input[name="secondnumber"]').val();
   alert(firstNumber);
-  });
+});
 
 
 
