@@ -1,12 +1,13 @@
  <!--div calls style class .intro from css, 'text' is replaced by 'helloText' variable  -->
- <div class="intro">
+ <div class="heading">
   <%= text %>
   </div>
+  <div></div>
   <div><input type="text" name="firstnumber">
   +
   <input type="text" name="secondnumber">
-  <button class="intro" id="enter">Caclulate</button>
+  <button class="body" id="enter">Calculate</button>
   </div>
-  <audio id="tutti" src='/sounds/tutti.wav'</audio>
+  <audio id="coin" src='/sounds/coin.wav'</audio>
 
 

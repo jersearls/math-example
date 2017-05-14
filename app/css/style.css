@@ -1,4 +1,10 @@
-.intro {
-  background-color: #ff0000;
-  border: 1px solid #dedede;
+.heading {
+  color: blue;
+  font-family: Georgia, serif;
+  font-size: 30px;
+}
+.body {
+  color: red;
+  font-family: Georgia, serif;
+  font-size: 16px;
 }

@@ -1,5 +1,5 @@
 window.helloText = function() {
-  return "This is a calculator. \'Nuff said.";
+  return "This is a calculator. Press the 'Enter' key to calculate.";
 };
 
 // JST is javascript template, dynamically rendering the page
@@ -23,7 +23,7 @@ window.addEventListener('keydown', function (e) {
   if (e.keyCode !== 13) {
     return;
   }
-  var enterSound = document.getElementById("tutti");
+  var enterSound = document.getElementById("coin");
   var firstNumber = $('input[name="firstnumber"]').val();
   var secondNumber = $('input[name="secondnumber"]').val();
   enterSound.play();
