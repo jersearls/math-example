@@ -16,16 +16,19 @@ if(window.addEventListener) {
 }
 
 //get a reference to the button element
-var enterBtn = $('button[name="enter"]');
+//var enterBtn = $('button[name="enter"]');
 
 // enter button actions
-$('#enter').click(function (e) {
+window.addEventListener('keydown', function (e) {
+  if (e.keyCode !== 13) {
+    return;
+  }
+  var enterSound = document.getElementById("tutti");
   var firstNumber = $('input[name="firstnumber"]').val();
   var secondNumber = $('input[name="secondnumber"]').val();
-  alert(firstNumber);
+  enterSound.play();
+  alert(parseInt(firstNumber, 10) + parseInt(secondNumber, 10));
 });
-
-
 
 // .get is http get request to server, '/add/5/6' is the root of the domain, defined in config/server.js
 //  $.get('/add/5/6', function (response) {
