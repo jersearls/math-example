@@ -7,7 +7,7 @@
   <input type="text" name="firstnumber">
   +
   <input type="text" name="secondnumber">
-  <button class="body" id="enter">Calculate</button>
+  <button input type="submit" class="body" id="calcBtn">Calculate</button>
 </div>
 <answer class="answer" id="answer"></answer>
 <audio id="coin" src='/sounds/coin.wav'</audio>

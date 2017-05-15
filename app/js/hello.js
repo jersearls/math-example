@@ -1,38 +1,53 @@
 window.helloText = function() {
-  return "This is a calculator. Press the 'Enter' key to calculate.";
+  return "Press the 'Enter' key or click the button to calculate.";
 };
+
+// actual calculation
+function calc() {
+    var answerField = document.getElementById("answer");
+    answerField.innerHTML = "";
+    var enterSound = document.getElementById("coin");
+    var firstNumber = $('input[name="firstnumber"]').val();
+    var secondNumber = $('input[name="secondnumber"]').val();
+    enterSound.currentTime = 0;
+    enterSound.play();
+    var mathAnswer = parseInt(firstNumber, 10) + parseInt(secondNumber, 10);
+    answerField.innerHTML += "  The answer is " + mathAnswer + ".  ";
+}
+
+function enterCalc(){
+  window.addEventListener('keydown', function (e) {
+    console.log(e.target);
+    if(e.keyCode === 13){
+      calc();
+      }
+  });
+}
+
+function clickCalc(){
+  var butn = document.getElementById("calcBtn");
+  butn.addEventListener('click', function (e) {
+    console.log(e.target);
+    calc();
+  });
+}
 
 // JST is javascript template, dynamically rendering the page
 window.hello = function() {
   var html = JST['app/templates/hello.us']({text: helloText()});
   document.body.innerHTML += html;
+  enterCalc();
+  clickCalc();
 };
 
 
 if(window.addEventListener) {
-  window.addEventListener('DOMContentLoaded', window.hello, false);
+  window.addEventListener('DOMContentLoaded', window.hello , false);
 } else {
   window.attachEvent('onload', window.hello);
 }
 
-//get a reference to the button element
-//var enterBtn = $('button[name="enter"]');
 
-// enter button actions
-window.addEventListener('keydown', function (e) {
-  if (e.keyCode !== 13) {
-    return;
-  }
-  var answerField = document.getElementById("answer");
-  answerField.innerHTML = "";
-  var enterSound = document.getElementById("coin");
-  var firstNumber = $('input[name="firstnumber"]').val();
-  var secondNumber = $('input[name="secondnumber"]').val();
-  enterSound.currentTime = 0;
-  enterSound.play();
-  var mathAnswer = parseInt(firstNumber, 10) + parseInt(secondNumber, 10);
-  answerField.innerHTML += "  The answer is " + mathAnswer + ".  ";
-});
 
 // .get is http get request to server, '/add/5/6' is the root of the domain, defined in config/server.js
 //  $.get('/add/5/6', function (response) {
