@@ -5,14 +5,13 @@ window.helloText = function() {
 // actual calculation
 function calc() {
     var answerField = document.getElementById("answer");
-    answerField.innerHTML = "";
     var enterSound = document.getElementById("coin");
     var firstNumber = $('input[name="firstnumber"]').val();
     var secondNumber = $('input[name="secondnumber"]').val();
     enterSound.currentTime = 0;
     enterSound.play();
     var mathAnswer = parseInt(firstNumber, 10) + parseInt(secondNumber, 10);
-    answerField.innerHTML += "  The answer is " + mathAnswer + ".  ";
+    answerField.innerHTML = "  The answer is " + mathAnswer + ".  ";
 }
 
 function enterCalc(){
