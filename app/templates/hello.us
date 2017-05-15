@@ -11,6 +11,8 @@
 </div>
 <answer class="answer" id="answer"></answer>
 <audio id="coin" src='/sounds/coin.wav'</audio>
+<audio id="error" src='/sounds/error.wav'</audio>
+
 
 
 

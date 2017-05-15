@@ -6,12 +6,18 @@ window.helloText = function() {
 function calc() {
     var answerField = document.getElementById("answer");
     var enterSound = document.getElementById("coin");
+    var errorSound = document.getElementById("error");
     var firstNumber = $('input[name="firstnumber"]').val();
     var secondNumber = $('input[name="secondnumber"]').val();
-    enterSound.currentTime = 0;
-    enterSound.play();
     var mathAnswer = parseInt(firstNumber, 10) + parseInt(secondNumber, 10);
-    answerField.innerHTML = "  The answer is " + mathAnswer + ".  ";
+    if (isNaN(mathAnswer)){
+      errorSound.play();
+      answerField.innerHTML = "ERROR: please enter an integer.";
+    } else {
+      enterSound.currentTime = 0;
+      enterSound.play();
+      answerField.innerHTML = "  The answer is " + mathAnswer + ".  ";
+    }
 }
 
 function enterCalc(){
@@ -19,7 +25,7 @@ function enterCalc(){
     console.log(e.target);
     if(e.keyCode === 13){
       calc();
-      }
+    }
   });
 }
 
