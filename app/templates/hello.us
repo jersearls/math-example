@@ -3,11 +3,14 @@
   <%= text %>
   </div>
   <div></div>
-  <div><input type="text" name="firstnumber">
+  <div class="main">
+  <input type="text" name="firstnumber">
   +
   <input type="text" name="secondnumber">
   <button class="body" id="enter">Calculate</button>
-  </div>
-  <audio id="coin" src='/sounds/coin.wav'</audio>
+</div>
+<answer class="answer" id="answer"></answer>
+<audio id="coin" src='/sounds/coin.wav'</audio>
+
 
 

@@ -4,7 +4,7 @@ window.helloText = function() {
 
 // JST is javascript template, dynamically rendering the page
 window.hello = function() {
-  html = JST['app/templates/hello.us']({text: helloText()});
+  var html = JST['app/templates/hello.us']({text: helloText()});
   document.body.innerHTML += html;
 };
 
@@ -23,11 +23,15 @@ window.addEventListener('keydown', function (e) {
   if (e.keyCode !== 13) {
     return;
   }
+  var answerField = document.getElementById("answer");
+  answerField.innerHTML = "";
   var enterSound = document.getElementById("coin");
   var firstNumber = $('input[name="firstnumber"]').val();
   var secondNumber = $('input[name="secondnumber"]').val();
+  enterSound.currentTime = 0;
   enterSound.play();
-  alert(parseInt(firstNumber, 10) + parseInt(secondNumber, 10));
+  var mathAnswer = parseInt(firstNumber, 10) + parseInt(secondNumber, 10);
+  answerField.innerHTML += "  The answer is " + mathAnswer + ".  ";
 });
 
 // .get is http get request to server, '/add/5/6' is the root of the domain, defined in config/server.js
