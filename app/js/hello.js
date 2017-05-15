@@ -5,14 +5,15 @@ window.helloText = function() {
 // actual calculation
 function calc() {
     var answerField = document.getElementById("answer");
+    var errorField = document.getElementById("errorText");
     var enterSound = document.getElementById("coin");
-    var errorSound = document.getElementById("error");
+    var errorSound = document.getElementById("errorSound");
     var firstNumber = $('input[name="firstnumber"]').val();
     var secondNumber = $('input[name="secondnumber"]').val();
     var mathAnswer = parseInt(firstNumber, 10) + parseInt(secondNumber, 10);
     if (isNaN(mathAnswer)){
       errorSound.play();
-      answerField.innerHTML = "ERROR: please enter an integer.";
+      errorField.innerHTML = "ERROR: please enter an integer.";
     } else {
       enterSound.currentTime = 0;
       enterSound.play();
