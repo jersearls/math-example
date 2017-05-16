@@ -10,7 +10,7 @@ function calc() {
     var errorSound = document.getElementById("errorSound");
     var firstNumber = $('input[name="firstnumber"]').val();
     var secondNumber = $('input[name="secondnumber"]').val();
-    var mathAnswer = parseInt(firstNumber, 10) + parseInt(secondNumber, 10);
+    var mathAnswer = parseFloat(firstNumber, 10) + parseFloat(secondNumber, 10);
     if (isNaN(mathAnswer)){
       answerField.innerHTML = "";
       errorSound.play();
