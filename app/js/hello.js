@@ -12,9 +12,11 @@ function calc() {
     var secondNumber = $('input[name="secondnumber"]').val();
     var mathAnswer = parseInt(firstNumber, 10) + parseInt(secondNumber, 10);
     if (isNaN(mathAnswer)){
+      answerField.innerHTML = "";
       errorSound.play();
       errorField.innerHTML = "ERROR: please enter an integer.";
     } else {
+      errorField.innerHTML = "";
       enterSound.currentTime = 0;
       enterSound.play();
       answerField.innerHTML = "  The answer is " + mathAnswer + ".  ";
@@ -60,4 +62,3 @@ if(window.addEventListener) {
 //    alert(response.result);
 //  });
 //};
-
