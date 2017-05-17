@@ -4,23 +4,23 @@ window.helloText = function() {
 
 // actual calculation
 function calc() {
-    var answerField = document.getElementById("answer");
-    var errorField = document.getElementById("errorText");
-    var enterSound = document.getElementById("coin");
-    var errorSound = document.getElementById("errorSound");
-    var firstNumber = $('input[name="firstnumber"]').val();
-    var secondNumber = $('input[name="secondnumber"]').val();
-    var mathAnswer = parseFloat(firstNumber, 10) + parseFloat(secondNumber, 10);
-    if (isNaN(mathAnswer)){
-      answerField.innerHTML = "";
-      errorSound.play();
-      errorField.innerHTML = "ERROR: please enter an integer.";
-    } else {
-      errorField.innerHTML = "";
-      enterSound.currentTime = 0;
-      enterSound.play();
-      answerField.innerHTML = "  The answer is " + mathAnswer + ".  ";
-    }
+  var answerField = document.getElementById("answer");
+  var errorField = document.getElementById("errorText");
+  var enterSound = document.getElementById("coin");
+  var errorSound = document.getElementById("errorSound");
+  var firstNumber = $('input[name="firstnumber"]').val();
+  var secondNumber = $('input[name="secondnumber"]').val();
+  var mathAnswer = parseFloat(firstNumber, 10) + parseFloat(secondNumber, 10);
+  if (isNaN(mathAnswer)){
+    answerField.innerHTML = "";
+    errorSound.play();
+    errorField.innerHTML = "ERROR: please enter an integer.";
+  } else {
+    errorField.innerHTML = "";
+    enterSound.currentTime = 0;
+    enterSound.play();
+    answerField.innerHTML = "  The answer is " + mathAnswer + ".  ";
+  }
 }
 
 function enterCalc(){
