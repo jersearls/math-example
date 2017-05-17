@@ -48,7 +48,6 @@ window.hello = function() {
   clickCalc();
 };
 
-
 if(window.addEventListener) {
   window.addEventListener('DOMContentLoaded', window.hello , false);
 } else {
