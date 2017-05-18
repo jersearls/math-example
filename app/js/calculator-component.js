@@ -1,6 +1,6 @@
 var utils = App.utils
 
-App.Calculator = class Calculator {
+App.CalculatorComponent = class CalculatorComponent {
   constructor(el) {
     this.el = el
     this.leftOperand = null
@@ -25,16 +25,12 @@ App.Calculator = class Calculator {
 
   updateResult() {
     this.readInputs()
-    this.result = this.sumInputs()
+    this.result = App.calculations.sum(this.leftOperand, this.rightOperand)
     this.render()
   }
 
   readInputs() {
     this.leftOperand = utils.queryFloat('[name=leftOperand]')
     this.rightOperand = utils.queryFloat('[name=rightOperand]')
-  }
-
-  sumInputs() {
-    return this.leftOperand + this.rightOperand
   }
 }

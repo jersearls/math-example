@@ -1,7 +1,7 @@
 window.App = {}
 
 App.main = function (el) {
-  new App.Calculator(el).init()
+  new App.CalculatorComponent(el).init()
 }
 
 $(function () {

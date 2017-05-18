@@ -7,6 +7,6 @@ App.utils = {
     })
   },
   queryFloat: function (selector) {
-    return parseFloat($(selector).val(), 10)
+    return $(selector).val()
   }
 }
