@@ -1,8 +1,4 @@
-window.App = {}
-
-App.main = function (el) {
-  new App.Calculator(el).init()
-}
+var utils = App.utils
 
 App.Calculator = class Calculator {
   constructor(el) {
@@ -13,7 +9,7 @@ App.Calculator = class Calculator {
   }
 
   init() {
-    App.utils.registerEnterKey('body', this.updateResult.bind(this))
+    utils.registerEnterKey('body', this.updateResult.bind(this))
     $(this.el).on('click', 'button#calcBtn', this.updateResult.bind(this))
     this.render()
   }
@@ -34,29 +30,11 @@ App.Calculator = class Calculator {
   }
 
   readInputs() {
-    this.leftOperand = App.utils.queryFloat('[name=leftOperand]')
-    this.rightOperand = App.utils.queryFloat('[name=rightOperand]')
+    this.leftOperand = utils.queryFloat('[name=leftOperand]')
+    this.rightOperand = utils.queryFloat('[name=rightOperand]')
   }
 
   sumInputs() {
     return this.leftOperand + this.rightOperand
   }
 }
-
-App.utils = {
-  registerEnterKey: function (selector, callback) {
-    $(selector).on('keypress', function (e) {
-      if(e.keyCode === 13) {
-        callback(e)
-      }
-    })
-  },
-  queryFloat: function (selector) {
-    return parseFloat($(selector).val(), 10)
-  }
-}
-
-$(function () {
-  if (typeof jasmine !== 'undefined') { return }
-  App.main($('body')[0])
-})

@@ -1,6 +1,3 @@
-var add = function (a,b) { return a + b }
-
-
 describe('addition feature', function () {
   beforeEach(function () {
     App.main(affix('#sandbox')[0])
