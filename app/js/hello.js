@@ -1,63 +1,62 @@
-window.helloText = function() {
-  return "Press the 'Enter' key or click the button to calculate.";
-};
+window.App = {}
 
-// actual calculation
-function calc() {
-  var answerField = document.getElementById("answer");
-  var errorField = document.getElementById("errorText");
-  var enterSound = document.getElementById("coin");
-  var errorSound = document.getElementById("errorSound");
-  var firstNumber = $('input[name="firstnumber"]').val();
-  var secondNumber = $('input[name="secondnumber"]').val();
-  var mathAnswer = parseFloat(firstNumber, 10) + parseFloat(secondNumber, 10);
-  if (isNaN(mathAnswer)){
-    answerField.innerHTML = "";
-    errorSound.play();
-    errorField.innerHTML = "ERROR: please enter an integer.";
-  } else {
-    errorField.innerHTML = "";
-    enterSound.currentTime = 0;
-    enterSound.play();
-    answerField.innerHTML = "  The answer is " + mathAnswer + ".  ";
+App.main = function (el) {
+  new App.Calculator(el).init()
+}
+
+App.Calculator = class Calculator {
+  constructor(el) {
+    this.el = el
+    this.leftOperand = null
+    this.rightOperand = null
+    this.result = null
+  }
+
+  init() {
+    App.utils.registerEnterKey('body', this.updateResult.bind(this))
+    $(this.el).on('click', 'button#calcBtn', this.updateResult.bind(this))
+    this.render()
+  }
+
+  render() {
+    $(this.el).html(JST['app/templates/calculator.us']({
+      leftOperand: this.leftOperand,
+      rightOperand: this.rightOperand,
+      result: this.result,
+      error: isNaN(this.result)
+    }))
+  }
+
+  updateResult() {
+    this.readInputs()
+    this.result = this.sumInputs()
+    this.render()
+  }
+
+  readInputs() {
+    this.leftOperand = App.utils.queryFloat('[name=leftOperand]')
+    this.rightOperand = App.utils.queryFloat('[name=rightOperand]')
+  }
+
+  sumInputs() {
+    return this.leftOperand + this.rightOperand
   }
 }
 
-function enterCalc(){
-  window.addEventListener('keydown', function (e) {
-    console.log(e.target);
-    if(e.keyCode === 13){
-      calc();
-    }
-  });
+App.utils = {
+  registerEnterKey: function (selector, callback) {
+    $(selector).on('keypress', function (e) {
+      if(e.keyCode === 13) {
+        callback(e)
+      }
+    })
+  },
+  queryFloat: function (selector) {
+    return parseFloat($(selector).val(), 10)
+  }
 }
 
-function clickCalc(){
-  var butn = document.getElementById("calcBtn");
-  butn.addEventListener('click', function (e) {
-    console.log(e.target);
-    calc();
-  });
-}
-
-// JST is javascript template, dynamically rendering the page
-window.hello = function() {
-  var html = JST['app/templates/hello.us']({text: helloText()});
-  document.body.innerHTML += html;
-  enterCalc();
-  clickCalc();
-};
-
-if(window.addEventListener) {
-  window.addEventListener('DOMContentLoaded', window.hello , false);
-} else {
-  window.attachEvent('onload', window.hello);
-}
-
-
-
-// .get is http get request to server, '/add/5/6' is the root of the domain, defined in config/server.js
-//  $.get('/add/5/6', function (response) {
-//    alert(response.result);
-//  });
-//};
+$(function () {
+  if (typeof jasmine !== 'undefined') { return }
+  App.main($('body')[0])
+})

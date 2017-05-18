@@ -1,0 +1,24 @@
+<!--div calls style class .intro from css, 'text' is replaced by 'helloText' variable  -->
+<div class="heading">
+  "Press the 'Enter' key or click the button to calculate."
+</div>
+<div></div>
+<div class="main">
+  <input type="text" name="leftOperand" value="<%= leftOperand %>">
+  +
+  <input type="text" name="rightOperand" value="<%= rightOperand %>">
+  <button input type="submit" id="calcBtn">Calculate</button>
+</div>
+
+<% if (result != null && error === false) { %>
+  <div class="result success">
+    The answer is <%= result %>.
+    <audio id="successSound" src='/sounds/coin.wav' autoplay />
+  </div>
+<% } else if (error === true) { %>
+  <div class="result error">
+    ERROR: please enter an integer.
+    <audio id="errorSound" src='/sounds/error.wav' autoplay />
+  </div>
+<% } %>
+
