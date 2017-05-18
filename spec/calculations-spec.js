@@ -10,5 +10,9 @@ describe('App.calculations', function () {
       expect(subject(0,0)).toEqual(0)
       expect(subject('poop', 5)).toBeNaN()
     })
+    it('adds multiple operands', function () {
+      expect(subject(5,1,2)).toEqual(8)
+      expect(subject(5,1,2,82)).toEqual(90)
+    })
   })
 })

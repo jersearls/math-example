@@ -1,5 +1,7 @@
 App.calculations = {
-  sum: function (leftOperand, rightOperand) {
-    return parseFloat(leftOperand, 10) + parseFloat(rightOperand, 10)
+  sum: function (...operands) {
+    return _.reduce(operands, function (memo, operand) {
+      return memo + parseFloat(operand, 10)
+    }, 0)
   }
 }
